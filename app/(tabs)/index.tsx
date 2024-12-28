@@ -1,12 +1,18 @@
-import { Image, StyleSheet, Platform } from "react-native";
-
-import { HelloWave } from "@/components/HelloWave";
+import { Image, StyleSheet } from "react-native";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 
 export default function HomeScreen() {
+  let behaviors = [
+    "Leash Trained",
+    "Friendly with cats",
+    "Active",
+    "Tries to eat things",
+  ];
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
@@ -21,9 +27,9 @@ export default function HomeScreen() {
     >
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Itachi!</ThemedText>
-        <ThemedText type="subtitle">French Bulldog . 1y 4m</ThemedText>
+        <ThemedText>French Bulldog . 1y 4m</ThemedText>
       </ThemedView>
-      <ThemedView>
+      <ThemedView style={{ overflowY: "scroll" }}>
         <ThemedView
           style={{
             flexDirection: "row",
@@ -32,7 +38,7 @@ export default function HomeScreen() {
           }}
         >
           <FontAwesome name="paw" size={24} color="black" />
-          <ThemedText type="title">About Itachi</ThemedText>
+          <ThemedText type="subtitle">About Itachi</ThemedText>
         </ThemedView>
 
         <ThemedView style={{ marginTop: 16, width: "100%" }}>
@@ -44,8 +50,8 @@ export default function HomeScreen() {
                 borderRadius: 8,
               }}
             >
-              <ThemedText type="subtitle">Breed</ThemedText>
-              <ThemedText type="subtitle">French Bulldog</ThemedText>
+              <ThemedText type="defaultSemiBold">Breed</ThemedText>
+              <ThemedText>French Bulldog</ThemedText>
             </ThemedView>
 
             <ThemedView
@@ -55,28 +61,52 @@ export default function HomeScreen() {
                 borderRadius: 8,
               }}
             >
-              <ThemedText type="subtitle">Breed</ThemedText>
-              <ThemedText type="subtitle">French Bulldog</ThemedText>
-            </ThemedView>
-
-            <ThemedView
-              style={{
-                padding: 16,
-                backgroundColor: "#F0F0F0",
-                borderRadius: 8,
-              }}
-            >
-              <ThemedText type="subtitle">Breed</ThemedText>
-              <ThemedText type="subtitle">French Bulldog</ThemedText>
+              <ThemedText type="defaultSemiBold">Breed</ThemedText>
+              <ThemedText>French Bulldog</ThemedText>
             </ThemedView>
           </ThemedView>
         </ThemedView>
 
-        <ThemedText type="subtitle" style={{ marginTop: 16 }}>
+        <ThemedText style={{ marginTop: 16 }}>
           Itachi is a very playful and energetic dog. He loves to play fetch and
           run around the park. He is very friendly and loves to meet new people
           and dogs.
         </ThemedText>
+      </ThemedView>
+
+      <ThemedView>
+        <ThemedView
+          style={{
+            flexDirection: "row",
+            justifyContent: "flex-start",
+            gap: 8,
+          }}
+        >
+          <FontAwesome6 name="dog" size={24} />
+          <ThemedText type="subtitle">Itachi behavior</ThemedText>
+        </ThemedView>
+        <ThemedView
+          style={{
+            marginTop: 16,
+            gap: 16,
+            flexDirection: "row",
+            flexWrap: "wrap",
+          }}
+        >
+          {behaviors.map((behavior: string, index: number) => (
+            <ThemedText
+              key={index}
+              style={{
+                padding: 14,
+                backgroundColor: "pink",
+                borderColor: "yellow",
+                borderRadius: 18,
+              }}
+            >
+              {behavior}
+            </ThemedText>
+          ))}
+        </ThemedView>
       </ThemedView>
     </ParallaxScrollView>
   );
